@@ -18,6 +18,7 @@ class PengajuanPimpinanController extends Controller
         //
         $sesi               = Sesi::where('status', '=', 'Aktif')->first();
         $id_sesi            = $sesi->id;
+        $sesia              = 1;
 
         $params = [
             'title'         => 'Pengajuan Baru',
