@@ -12,17 +12,26 @@
                     <h4 class="card-title">Pengajuan Bantuan</h4>
                     <div>
                         <blockquote class="blockquote pr-1 text-right border-right-primary border-right-3">
-                            <p class="mb-0">
-                                <div class="alert alert-primary alert-validation-msg" role="alert">
-                                    <div class="alert-body">
-                                        <p>Tahun Anggaran {{ $sesi->tahun_anggaran }}, <small> Hingga: {{ $sesi->selesai }} </small>
-                                        </p>
+                            @if ($sesi != NULL)
+                            <div>
+                                <p class="mb-0">
+                                    <div class="alert alert-primary alert-validation-msg" role="alert">
+                                        <div class="alert-body">
+                                            <p>Tahun Anggaran {{ $sesi->tahun_anggaran }}, <small> Hingga: {{ $sesi->selesai }} </small>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
 
-                            <footer class="blockquote-footer">
-                                Sesi Aktif untuk pengjuan saat ini
-                            </footer>
+                                <footer class="blockquote-footer">
+                                    Sesi Aktif untuk pengjuan saat ini
+                                </footer>
+                            </div>
+                            @else
+                            <div class="alert alert-danger alert-validation-msg" role="alert">
+                                <p class="mb-0">Sesi pengajuan telah berakhir</p>
+                            </div>
+                            @endif
+
                         </blockquote>
                     </div>
                 </div>

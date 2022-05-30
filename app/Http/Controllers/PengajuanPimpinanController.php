@@ -16,16 +16,21 @@ class PengajuanPimpinanController extends Controller
     public function index()
     {
         //
-        $sesi               = Sesi::where('status', '=', 'Aktif')->first();
-        $id_sesi            = $sesi->id;
-        $sesia              = 1;
+        // $sesi               = Sesi::where('status', '=', 'Aktif')->first();
+        // $id_sesi            = $sesi->id;
 
         $params = [
             'title'         => 'Pengajuan Baru',
             'page_category' => 'Pengajuan',
-            'data'          => Pengajuan::with('lansia', 'sesi')->get(),
+            'data'          => Pengajuan::with('lansia', 'sesi')->where('keputusan', NULL)
+                // ->whereHas('sesi', function ($q) {
+                //     $q->where('status', '=', 'Aktif');
+                // })
+                ->get(),
             'sesi'          => Sesi::where('status', '=', 'Aktif')->first(),
         ];
+
+        // dd($params);
 
         return view('pengajuan.pimpinan.index')->with($params);
     }
