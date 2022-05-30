@@ -85,6 +85,8 @@ class SesiController extends Controller
             'page_category'     => 'Data Master',
         ];
 
+        // dd($params);
+
         return view('sesi.edit')->with($params);
     }
 

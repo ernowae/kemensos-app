@@ -33,8 +33,10 @@
                                 <div class="form-group">
                                     <label for="first-name-column">Tahun Anggaran</label>
                                     <select class="form-control" id="basicSelect" name="tahun_anggaran">
+                                            <option value="{{ $data->tahun_anggaran }}" >{{ $data->tahun_anggaran }}</option>
+
                                         @for ($i = $tahun_anggaran; $i < $tahun_anggaran + 5; $i++)
-                                             <option value="{{ $i. '/' . $i+1 }}" {{ $data->tahun_anggaran == $i. '/' . $i+1 ? 'selected' : '' }}>{{ $i. '/' . $i+1 }}</option>
+                                             <option value="{{ $i. '/' . $i+1 }}" >{{ $i. '/' . $i+1 }}</option>
                                         @endfor
                                     </select>
                                 </div>
