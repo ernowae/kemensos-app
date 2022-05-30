@@ -44,10 +44,26 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile-pimpinan', profilePimpinanController::class);
     Route::resource('profile-pendamping', ProfilePendampingController::class);
     // Route::resource('pengajuanPimpinan', PengajuanBaruPimpinanController::class);
+    // pengajuan baru
     Route::get('/pengajuan-baru', [PengajuanPimpinanController::class, 'index'])->name('pengajuan-baru.index');
     Route::get('/pengajuan-show/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'show'])->name('pengajuan-baru.show');
-    Route::put('/pengajuan-terima/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'terima'])->name('pengajuan-baru.terima');
-    Route::put('/pengajuan-tolak/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'tolak'])->name('pengajuan-baru.tolak');
+    Route::put('/pengajuan-terima/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'updateterima'])->name('pengajuan-baru.terima');
+    Route::put('/pengajuan-tolak/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'updatetolak'])->name('pengajuan-baru.tolak');
+    // pengajuan baru
+
+    // pengajuan diterima
+    Route::get('/pengajuan-baru-terima', [PengajuanPimpinanController::class, 'index'])->name('pengajuan-baru.index');
+    Route::get('/pengajuan-show/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'show'])->name('pengajuan-baru.show');
+    Route::put('/pengajuan-terima/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'updateterima'])->name('pengajuan-baru.terima');
+    Route::put('/pengajuan-tolak/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'updatetolak'])->name('pengajuan-baru.tolak');
+    Route::put('/pengajuan-reset/{pengajuanPimpinan}', [PengajuanPimpinanController::class, 'reset'])->name('pengajuan-baru.reset');
+    // pengajuan diterima
+
+    Route::get('/pengajuan-baru-terima', [PengajuanPimpinanController::class, 'indexTerima'])->name('pengajuan-baru-terima.index');
+    Route::get('/pengajuan-baru-tolak', [PengajuanPimpinanController::class, 'indexTolak'])->name('pengajuan-baru-tolak.index');
+    Route::get('/pengajuan-baru-arsip', [PengajuanPimpinanController::class, 'indexArsip'])->name('pengajuan-baru-arsip.index');
+
+
     // Route::put('/donasi/{data:id}', [DonasisController::class, 'update'])->name('donasi.update');
     // '/detaildonasi/{data:id}',
 });

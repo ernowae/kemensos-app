@@ -9,35 +9,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Pengajuan Bantuan</h4>
-                    <div>
-                        <blockquote class="blockquote pr-1 text-right border-right-primary border-right-3">
-                            @if ($sesi != NULL)
-                            <div>
-                                <p class="mb-0">
-                                    <div class="alert alert-primary alert-validation-msg" role="alert">
-                                        <div class="alert-body">
-                                            <p>Tahun Anggaran {{ $sesi->tahun_anggaran }}, <small> Hingga: {{ $sesi->selesai }} </small>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                <footer class="blockquote-footer">
-                                    Sesi Aktif untuk pengjuan saat ini
-                                </footer>
-                            </div>
-                            @else
-                            <div class="alert alert-danger alert-validation-msg" role="alert">
-                                <p class="mb-0">Sesi pengajuan telah berakhir</p>
-                            </div>
-                            @endif
-
-                        </blockquote>
-                    </div>
+                    <h4 class="card-title">Arsip Bantuan</h4>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                       Data pengajuan bantuan oleh yang diajukan oleh lansia berdasarkan sepengetahuan pembimbing yang telah ditetapkan sebelumnya
+                       Arsip pengajuan bantuan oleh yang diajukan oleh lansia berdasarkan sepengetahuan pembimbing yang telah ditetapkan sebelumnya
                     </p>
                 </div>
                 <div class="table-responsive">
@@ -48,7 +24,7 @@
                                 <th>Nama Lansia</th>
                                 <th>Nama Usaha</th>
                                 <th>Tanggal Pengajuan</th>
-                                {{-- <th>Sesi</th> --}}
+                                <th>Sesi</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>

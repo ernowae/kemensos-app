@@ -44,12 +44,12 @@
                     <ul class="menu-content">
                         <li class="@if (Request::segment(1)=='pengajuan-baru' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Pengajuan Baru</span></a>
                         </li>
-                       {{-- <li class="@if (Request::segment(1)=='pengajuanPimpinan' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuanPimpinan.terima') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">Pengajuan Diterima</span></a>
-                        </li> --}}
-                        {{-- <li class="@if (Request::segment(1)=='pengajuanPimpinan-tolak' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pendamping.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">Pengajuan Ditolak</span></a>
+                       <li class="@if (Request::segment(1)=='pengajuan-baru-terima' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru-terima.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">Pengajuan Diterima</span></a>
                         </li>
-                       <li class="@if (Request::segment(1)=='pengajuan-arsip' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pimpinan.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Arsip Pengajuan</span></a>
-                        </li> --}}
+                        <li class="@if (Request::segment(1)=='pengajuan-baru-tolak' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru-tolak.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">Pengajuan Ditolak</span></a>
+                        </li>
+                       <li class="@if (Request::segment(1)=='pengajuan-baru-arsip' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru-arsip.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Arsip Pengajuan</span></a>
+                        </li>
                     </ul>
                 </li>
 

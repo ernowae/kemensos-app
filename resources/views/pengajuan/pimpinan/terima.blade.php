@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Pengajuan Bantuan</h4>
+                    <h4 class="card-title">Pengajuan Bantuan Diterima</h4>
                     <div>
                         <blockquote class="blockquote pr-1 text-right border-right-primary border-right-3">
                             @if ($sesi != NULL)
@@ -48,7 +48,7 @@
                                 <th>Nama Lansia</th>
                                 <th>Nama Usaha</th>
                                 <th>Tanggal Pengajuan</th>
-                                {{-- <th>Sesi</th> --}}
+                                <th>Sesi</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -59,7 +59,7 @@
                                 <td>{{ $data->lansia->nama }}</td>
                                 <td>{{ $data->nama_usaha }}</td>
                                 <td><span class="font-weight-bold">{{ $data->created_at }}</span> </td>
-                                {{-- <th>{{ $data->sesi->tahun_anggaran }}</th> --}}
+                                <th>{{ $data->sesi->tahun_anggaran }}</th>
                                 <td>
                                     <div class="row">
                                         <a class="btn btn-outline-info waves-effect btn-sm" href="{{ route('pengajuan-baru.show', [$data->id]) }}">
@@ -67,11 +67,11 @@
                                             <span><i data-feather='info'></i></span>
                                         </a>
                                         <a>
-                                            <form onsubmit="return confirm('Terima pengajuan ini?')" class="form"  method="POST" action="{{ route('pengajuan-baru.terima', [$data->id]) }}">
+                                            <form onsubmit="return confirm('Reset pengajuan ini?')" class="form"  method="POST" action="{{ route('pengajuan-baru.reset', [$data->id]) }}">
                                                 @csrf
                                                 <input type="hidden" value="PUT" name="_method">
                                                 <input type="hidden" name="id" value="{{ $data->id }}">
-                                                <button type="submit" class="btn btn-outline-primary waves-effect"><i data-feather='check-circle'></i></button>
+                                                <button type="submit" class="btn btn-outline-warning waves-effect"><i data-feather='rotate-ccw'></i></button>
                                             </form>
                                         </a>
 

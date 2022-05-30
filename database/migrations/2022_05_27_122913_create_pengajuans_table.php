@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('kk');
             $table->text('penghasilan');                // surat keterangan penghasilan
             $table->text('pesan')->nullable();
+            $table->date('diterima')->nullable();
+            $table->date('ditolak')->nullable();
 
             $table->timestamps();
         });
