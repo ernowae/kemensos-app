@@ -53,16 +53,14 @@
                     </ul>
                 </li>
 
-                {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='layers'></i><span class="menu-title text-truncate" data-i18n="User">Usulan Barang</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='layers'></i><span class="menu-title text-truncate" data-i18n="User">Usulan Barang</span></a>
                     <ul class="menu-content">
-                        <li class="@if (Request::segment(1)=='usulan-baru' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuanPimpinan.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Usulan Baru</span></a>
+                        <li class="@if (Request::segment(1)=='usulan-baru' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Usulan Baru</span></a>
                         </li>
-                       <li class="@if (Request::segment(1)=='pengajuan-diterima' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pendamping.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">Usulan Diterima</span></a>
-                        </li>
-                       <li class="@if (Request::segment(1)=='pengajuan-arsip' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pimpinan.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Arsip Usulan</span></a>
+                       <li class="@if (Request::segment(1)=='pengajuan-arsip' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Arsip Usulan</span></a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
 
                 <li class=" nav-item @if (Request::segment(1)=='galeri' ) active @endif">
                     <a class="d-flex align-items-center" href="{{ route('wilayah.index') }}">

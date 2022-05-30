@@ -135,6 +135,6 @@ class PengajuanPimpinanController extends Controller
 
         // dd($params);
 
-        return view('pengajuan.pimpinan.tolak')->with($params);
+        return view('pengajuan.pimpinan.arsip')->with($params);
     }
 }
