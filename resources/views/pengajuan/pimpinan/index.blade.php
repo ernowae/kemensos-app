@@ -62,10 +62,16 @@
                                 {{-- <th>{{ $data->sesi->tahun_anggaran }}</th> --}}
                                 <td>
                                     <div class="row">
-                                        <a class="btn btn-outline-info waves-effect btn-sm" href="{{ route('pengajuan-baru.show', [$data->id]) }}">
+                                        {{-- show --}}
+                                        {{-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-backdrop="false" data-target="#backdrop">
+                                            Disabled Backdrop
+                                        </button> --}}
+
+                                        <a class="btn btn-outline-info waves-effect btn-sm" href="{{ route('pengajuan-baru.show', [$data->id]) }}" data-toggle="modal" data-backdrop="false" data-target="#backdrop">
 
                                             <span><i data-feather='info'></i></span>
                                         </a>
+                                        {{-- acc --}}
                                         <a>
                                             <form onsubmit="return confirm('Terima pengajuan ini?')" class="form"  method="POST" action="{{ route('pengajuan-baru.terima', [$data->id]) }}">
                                                 @csrf
@@ -74,7 +80,7 @@
                                                 <button type="submit" class="btn btn-outline-primary waves-effect"><i data-feather='check-circle'></i></button>
                                             </form>
                                         </a>
-
+                                        {{-- reject --}}
                                         <a>
                                             <form onsubmit="return confirm('Tolak pengajuan ini?')" class="form"  method="POST" action="{{ route('pengajuan-baru.tolak', [$data->id]) }}">
                                                 @csrf
@@ -83,6 +89,7 @@
                                                 <button type="submit" class="btn btn-outline-danger waves-effect"> <i data-feather='x-square'></i></button>
                                             </form>
                                         </a>
+
                                     </div>
                                 </td>
                             </tr>
@@ -97,3 +104,44 @@
 </div>
 
 @endsection
+
+@include('pengajuan.pimpinan.modal')
+
+@push('script')
+    <script>
+        function swalDelete(id) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Peringatan',
+                text: 'Apakah yakin ingin menolak?',
+                showCancelButton: true,
+                confirmButtonText: 'Cool',
+                customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-danger'
+                },
+                cancelButtonText: 'Batal',
+                reverseButtons: true
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $('#destroy-' + id).submit();
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            })
+        }
+    </script>
+@endpush
+{{-- <button type="submit" class="btn btn-sm btn-danger btn-icon-split" onclick="swalDelete(' . $data->id . ' )">
+    <span class="icon">
+        <i class="fas fa-trash"></i>
+    </span>
+    <span class="text">Hapus</span>
+</button>
+<form id="destroy-' . $data->id . '" action="' . route('other-data.sumber-biaya.destroy', $data->id) . '" method="POST">
+    <input type="hidden" name="_token" value="' . csrf_token() . '" />
+    <input type="hidden" name="_method" value="delete" />
+</form> --}}

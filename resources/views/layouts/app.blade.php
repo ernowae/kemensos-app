@@ -208,6 +208,7 @@
 
         <!-- BEGIN: Vendor JS-->
         <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
+        <script src="{{ asset('app-assets/vendors/css/extensions/sweetalert2.min.css') }}"></script>
         <!-- BEGIN Vendor JS-->
 
         <!-- BEGIN: Page Vendor JS-->
@@ -232,6 +233,8 @@
         <script src="{{ asset('app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js') }}"></script>
         <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
         <script src="{{ asset('app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('app-assets/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+        <script src="{{ asset('app-assets/vendors/js/extensions/polyfill.min.js') }}"></script>
         <!-- END: Page Vendor JS-->
 
         <!-- BEGIN: Theme JS-->
@@ -245,6 +248,8 @@
         <script src="{{ asset('app-assets/js/scripts/forms/form-wizard.js') }}"></script>
         <script src="{{ asset('app-assets/js/scripts/forms/form-input-mask.js') }}"></script>
         <script src="{{ asset('app-assets/js/scripts/pages/app-user-view.js') }}"></script>
+        <script src="{{ asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.css') }}"></script>
+        <script src="{{ asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.js') }}"></script>
         <!-- END: Page JS-->
 
 
@@ -259,6 +264,8 @@
             })
 
         </script>
+
+        @stack('script')
 
     </body>
     <!-- END: Body-->
