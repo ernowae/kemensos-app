@@ -63,11 +63,7 @@
                                 <td>
                                     <div class="row">
                                         {{-- show --}}
-                                        {{-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-backdrop="false" data-target="#backdrop">
-                                            Disabled Backdrop
-                                        </button> --}}
-
-                                        <a class="btn btn-outline-info waves-effect btn-sm" href="{{ route('pengajuan-baru.show', [$data->id]) }}" data-toggle="modal" data-backdrop="false" data-target="#backdrop">
+                                        <a class="btn btn-outline-info waves-effect btn-xm mb-1" href="{{ route('pengajuan-baru.show', [$data->id]) }}" data-toggle="modal" data-backdrop="false" data-target="#backdrop">
 
                                             <span><i data-feather='info'></i></span>
                                         </a>
