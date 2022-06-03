@@ -55,9 +55,17 @@
 
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='layers'></i><span class="menu-title text-truncate" data-i18n="User">Usulan Barang</span></a>
                     <ul class="menu-content">
-                        <li class="@if (Request::segment(1)=='usulan-baru' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Usulan Baru</span></a>
+                        <li class="@if (Request::segment(1)=='barang-pimpinan.index' ) active @endif">
+                            <a class="d-flex align-items-center" href="{{ route('barang-pimpinan.index') }}">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate" data-i18n="List">Usulan Baru</span>
+                            </a>
                         </li>
-                       <li class="@if (Request::segment(1)=='pengajuan-arsip' ) active @endif"><a class="d-flex align-items-center" href="{{ route('pengajuan-baru.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Arsip Usulan</span></a>
+                       <li class="@if (Request::segment(1)=='pengajuan-arsip' ) active @endif">
+                            <a class="d-flex align-items-center" href="{{ route('pengajuan-baru.index') }}">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate" data-i18n="Edit">Arsip Usulan</span>
+                            </a>
                         </li>
                     </ul>
                 </li>

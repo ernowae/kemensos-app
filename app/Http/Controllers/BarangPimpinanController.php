@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BarangController extends Controller
+class BarangPimpinanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +14,7 @@ class BarangController extends Controller
     public function index()
     {
         //
+        return view('barang.pimpinan.index');
     }
 
     /**

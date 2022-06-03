@@ -63,7 +63,7 @@
                                 <td>
                                     <div class="row">
                                         {{-- show --}}
-                                        <a class="btn btn-outline-info waves-effect btn-xm mb-1" href="{{ route('pengajuan-baru.show', [$data->id]) }}" data-toggle="modal" data-backdrop="false" data-target="#backdrop">
+                                        <a class="btn btn-outline-info waves-effect btn-xm mb-1"  data-toggle="modal" data-backdrop="false" data-target="#backdrop-{{ $loop->index}}">
 
                                             <span><i data-feather='info'></i></span>
                                         </a>
@@ -89,6 +89,8 @@
                                     </div>
                                 </td>
                             </tr>
+                            @include('pengajuan.pimpinan.modal')
+
                             @endforeach
                         </tbody>
                     </table>
@@ -100,44 +102,3 @@
 </div>
 
 @endsection
-
-@include('pengajuan.pimpinan.modal')
-
-@push('script')
-    <script>
-        function swalDelete(id) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Peringatan',
-                text: 'Apakah yakin ingin menolak?',
-                showCancelButton: true,
-                confirmButtonText: 'Cool',
-                customClass: {
-                confirmButton: 'btn btn-primary',
-                cancelButton: 'btn btn-danger'
-                },
-                cancelButtonText: 'Batal',
-                reverseButtons: true
-            }).then((result) => {
-            if (result.isConfirmed) {
-                $('#destroy-' + id).submit();
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-            })
-        }
-    </script>
-@endpush
-{{-- <button type="submit" class="btn btn-sm btn-danger btn-icon-split" onclick="swalDelete(' . $data->id . ' )">
-    <span class="icon">
-        <i class="fas fa-trash"></i>
-    </span>
-    <span class="text">Hapus</span>
-</button>
-<form id="destroy-' . $data->id . '" action="' . route('other-data.sumber-biaya.destroy', $data->id) . '" method="POST">
-    <input type="hidden" name="_token" value="' . csrf_token() . '" />
-    <input type="hidden" name="_method" value="delete" />
-</form> --}}

@@ -38,17 +38,20 @@
                                 <td><span class="font-weight-bold">{{ $data->created_at }}</span> </td>
                                 <th>{{ $data->sesi->tahun_anggaran }}</th>
                                 <th>
-                                    <div class="badge badge-pill badge-glow badge-primary">Diterima</div>
+                                    <div class="badge badge-pill badge-glow badge-{{ $data->keputusan == 1 ? 'primary' : ($data->keputusan == 2 ? 'warning' : 'danger' ) }}">
+                                        {{ $data->keputusan == 1 ? 'Diterima' : ($data->keputusan == 2 ? 'Ditolak' : 'Tidak diproses' ) }}
+                                    </div>
                                 </th>
                                 <td>
                                     <div class="row">
-                                        <a class="btn btn-outline-primary waves-effect btn-sm" href="{{ route('pengajuan-baru.show', [$data->id]) }}">
+                                        <a class="btn btn-outline-info waves-effect btn-xm mb-1"  data-toggle="modal" data-backdrop="false" data-target="#backdrop-{{ $loop->index}}">
 
                                             <span><i data-feather='info'></i></span>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
+                            @include('pengajuan.pimpinan.modal')
                             @endforeach
                         </tbody>
                     </table>

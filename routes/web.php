@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangPimpinanController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LansiaController;
@@ -63,7 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pengajuan-baru-tolak', [PengajuanPimpinanController::class, 'indexTolak'])->name('pengajuan-baru-tolak.index');
     Route::get('/pengajuan-baru-arsip', [PengajuanPimpinanController::class, 'indexArsip'])->name('pengajuan-baru-arsip.index');
 
-    
+    Route::resource('barang-pimpinan', BarangPimpinanController::class);
 
 
     // Route::put('/donasi/{data:id}', [DonasisController::class, 'update'])->name('donasi.update');

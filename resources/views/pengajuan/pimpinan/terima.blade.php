@@ -62,7 +62,7 @@
                                 <th>{{ $data->sesi->tahun_anggaran }}</th>
                                 <td>
                                     <div class="row">
-                                        <a class="btn btn-outline-info waves-effect btn-sm" href="{{ route('pengajuan-baru.show', [$data->id]) }}">
+                                        <a class="btn btn-outline-info waves-effect btn-xm mb-1"  data-toggle="modal" data-backdrop="false" data-target="#backdrop-{{ $loop->index}}">
 
                                             <span><i data-feather='info'></i></span>
                                         </a>
@@ -86,6 +86,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @include('pengajuan.pimpinan.modal')
                             @endforeach
                         </tbody>
                     </table>

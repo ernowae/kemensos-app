@@ -17,7 +17,8 @@ class PengajuanPimpinanController extends Controller
     {
         //mengambil sesi aktif, jika ada 2 maka di ambil sesi paling terakhir
         $sesi               = Sesi::where('status', '=', 'Aktif')->orderByDesc('id')->first();
-        $id_sesi            = $sesi->id;
+        $id_sesi            = $sesi != NULL ? $sesi->id : NULL;
+
 
         $params = [
             'title'         => 'Pengajuan Baru',
@@ -73,7 +74,7 @@ class PengajuanPimpinanController extends Controller
     {
         //mengambil sesi aktif, jika ada 2 maka di ambil sesi paling terakhir
         $sesi               = Sesi::where('status', '=', 'Aktif')->orderByDesc('id')->first();
-        $id_sesi            = $sesi->id;
+        $id_sesi            = $sesi != NULL ? $sesi->id : NULL;
 
         $params = [
             'title'         => 'Pengajuan Diterima',
@@ -96,7 +97,7 @@ class PengajuanPimpinanController extends Controller
     {
         //mengambil sesi aktif, jika ada 2 maka di ambil sesi paling terakhir
         $sesi               = Sesi::where('status', '=', 'Aktif')->orderByDesc('id')->first();
-        $id_sesi            = $sesi->id;
+        $id_sesi            = $sesi != NULL ? $sesi->id : NULL;
 
         $params = [
             'title'         => 'Pengajuan Ditolak',
@@ -117,20 +118,12 @@ class PengajuanPimpinanController extends Controller
 
     public function indexArsip()
     {
-        //mengambil sesi aktif, jika ada 2 maka di ambil sesi paling terakhir
-        $sesi               = Sesi::where('status', '=', 'Aktif')->orderByDesc('id')->first();
-        $id_sesi            = $sesi->id;
 
         $params = [
             'title'         => 'Pengajuan Arsip',
             'page_category' => 'Pengajuan',
             //data diambil berdasarkan sesi yang sedang diaktifkan
-            'data'          => Pengajuan::with('lansia', 'sesi')->where('keputusan', 2)->where('status_pengajuan', 2)->where('sesi_id', $id_sesi)
-                // ->whereHas('sesi', function ($q) {
-                //     $q->where('status', '=', 'Aktif');
-                // })
-                ->get(),
-            'sesi'          => Sesi::where('status', '=', 'Aktif')->first(),
+            'data'          => Pengajuan::with('lansia', 'sesi')->where('status_pengajuan', 2)->get(),
         ];
 
         // dd($params);

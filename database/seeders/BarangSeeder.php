@@ -45,5 +45,36 @@ class BarangSeeder extends Seeder
             'keterangan'        => NULL,
             'foto'              => 'jasdjhf.pdf',
         ]);
+
+
+        Barang::create([
+            'pengajuan_id'      => 2,
+            'nama_barang'       => 'Becak Motor',
+            'jumlah'            => 1,
+            'harga'             => 12000000,
+            'status'            => NULL,
+            'keterangan'        => NULL,
+            'foto'              => 'sdjhfjdsgfuydsgf.pdf',
+        ]);
+
+        Barang::create([
+            'pengajuan_id'      => 2,
+            'nama_barang'       => 'rice Cooker',
+            'jumlah'            => 1,
+            'harga'             => 900000,
+            'status'            => NULL,
+            'keterangan'        => NULL,
+            'foto'              => 'afjhfjefej.pdf',
+        ]);
+
+        Barang::create([
+            'pengajuan_id'      => 2,
+            'nama_barang'       => 'Blender',
+            'jumlah'            => 1,
+            'harga'             => 370000,
+            'status'            => NULL,
+            'keterangan'        => NULL,
+            'foto'              => 'jasdjhf.pdf',
+        ]);
     }
 }
