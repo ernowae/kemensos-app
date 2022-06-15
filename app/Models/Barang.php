@@ -13,4 +13,18 @@ class Barang extends Model
     {
         return $this->belongsTo(Pengajuan::class);
     }
+
+    protected $fillable = [
+        'status',
+        'harga',
+        'keterangan',
+        'foto',
+        'nama_barang',
+        'jumlah',
+        'pengajuan_id',
+    ];
+
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }

@@ -28,9 +28,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // return view('welcome');
     return view('auth.login');
 });
-
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -65,11 +65,21 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pengajuan-baru-tolak', [PengajuanPimpinanController::class, 'indexTolak'])->name('pengajuan-baru-tolak.index');
     Route::get('/pengajuan-baru-arsip', [PengajuanPimpinanController::class, 'indexArsip'])->name('pengajuan-baru-arsip.index');
 
-    Route::resource('barang-pimpinan', BarangPimpinanController::class);
+    Route::get('barang-pimpinan', [BarangPimpinanController::class, 'index'])->name('barang-pimpinan.index');
+    Route::get('barang-pimpinan-arsip', [BarangPimpinanController::class, 'arsip'])->name('barang-pimpinan.arsip');
+    Route::put('barang-pimpinan-terima/{BarangPimpinan}', [BarangPimpinanController::class, 'updateterima'])->name('barang-pimpinan.terima');
+    Route::put('barang-pimpinan-reset/{BarangPimpinan}', [BarangPimpinanController::class, 'reset'])->name('barang-pimpinan.reset');
+
+    Route::put('barang-pimpinan-update/{BarangPimpinan}', [BarangPimpinanController::class, 'updateusulan'])->name('barang-pimpinan.updateusulan');
 
 
     // Route::put('/donasi/{data:id}', [DonasisController::class, 'update'])->name('donasi.update');
     // '/detaildonasi/{data:id}',
 });
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

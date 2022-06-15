@@ -16,19 +16,20 @@
                         {{Auth::user()->lansia->nama}}
                         @endhasrole
                     </h5>
-                    <p class="card-text font-small-3">Kamu memiliki akses sebagai:</p>
                     <h3 class="mb-75 mt-2 pt-50">
                         <a href="javascript:void(0);">
-                            @hasrole('pimpinan')
-                            Pimpinan
-                            @elserole('pembimbing')
-                            Pendamping
-                            @elserole('lansia')
-                            Lansia
-                            @endhasrole
+                            Anda memiliki akses sebagai:
                         </a>
                     </h3>
-                    <button type="button" class="btn btn-primary">Mulai Aplikasi</button>
+                    <button type="button" class="btn btn-primary">
+                        @hasrole('pimpinan')
+                        Pimpinan
+                        @elserole('pembimbing')
+                        Pendamping
+                        @elserole('lansia')
+                        Lansia
+                        @endhasrole
+                    </button>
                 </div>
             </div>
         </div>
@@ -112,7 +113,7 @@
                     <div class="card">
                         <div class="card-body pb-50">
                             <h6>Pengajuan Masuk</h6>
-                            <h2 class="font-weight-bolder mb-1">67 Lansia</h2>
+                            <h2 class="font-weight-bolder mb-1">{{ $pengajuan }} Orang Lansia</h2>
                             <div id="statistics-order-chart"></div>
                         </div>
                     </div>
@@ -124,7 +125,7 @@
                     <div class="card card-tiny-line-stats">
                         <div class="card-body pb-50">
                             <h6>Pengajuan diterima</h6>
-                            <h2 class="font-weight-bolder mb-1">54 Lansia</h2>
+                            <h2 class="font-weight-bolder mb-1">{{ $diterima }} Orang Lansia</h2>
                             <div id="statistics-profit-chart"></div>
                         </div>
                     </div>
@@ -139,7 +140,7 @@
                                 <div class="col-6">
                                     <h4 class="card-title mb-1">Bantuan Tersalurkan</h4>
                                     <div class="font-small-2">Sesi ini</div>
-                                    <h5 class="mb-1">Rp. 345.997.765</h5>
+                                    <h5 class="mb-1">Rp. {{ number_format($totalBantuanTerkini) }}</h5>
                                     <p class="card-text text-muted font-small-2">
                                         <span class="font-weight-bolder">7%</span><span> lebih sedikit dari sesi sebelumnya.</span>
                                     </p>

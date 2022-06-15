@@ -21,7 +21,7 @@ class BarangSeeder extends Seeder
             'nama_barang'       => 'Becak Motor',
             'jumlah'            => 1,
             'harga'             => 12000000,
-            'status'            => NULL,
+            'status'            => 0,
             'keterangan'        => NULL,
             'foto'              => 'sdjhfjdsgfuydsgf.pdf',
         ]);
@@ -31,7 +31,7 @@ class BarangSeeder extends Seeder
             'nama_barang'       => 'rice Cooker',
             'jumlah'            => 1,
             'harga'             => 900000,
-            'status'            => NULL,
+            'status'            => 0,
             'keterangan'        => NULL,
             'foto'              => 'afjhfjefej.pdf',
         ]);
@@ -41,7 +41,7 @@ class BarangSeeder extends Seeder
             'nama_barang'       => 'Blender',
             'jumlah'            => 1,
             'harga'             => 370000,
-            'status'            => NULL,
+            'status'            => 0,
             'keterangan'        => NULL,
             'foto'              => 'jasdjhf.pdf',
         ]);
@@ -52,7 +52,7 @@ class BarangSeeder extends Seeder
             'nama_barang'       => 'Becak Motor',
             'jumlah'            => 1,
             'harga'             => 12000000,
-            'status'            => NULL,
+            'status'            => 0,
             'keterangan'        => NULL,
             'foto'              => 'sdjhfjdsgfuydsgf.pdf',
         ]);
@@ -62,7 +62,7 @@ class BarangSeeder extends Seeder
             'nama_barang'       => 'rice Cooker',
             'jumlah'            => 1,
             'harga'             => 900000,
-            'status'            => NULL,
+            'status'            => 0,
             'keterangan'        => NULL,
             'foto'              => 'afjhfjefej.pdf',
         ]);
@@ -72,7 +72,7 @@ class BarangSeeder extends Seeder
             'nama_barang'       => 'Blender',
             'jumlah'            => 1,
             'harga'             => 370000,
-            'status'            => NULL,
+            'status'            => 0,
             'keterangan'        => NULL,
             'foto'              => 'jasdjhf.pdf',
         ]);

@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sesi_id')->constrained()->onDelete('cascade');
             $table->foreignId('lansia_id')->constrained()->onDelete('cascade');
-            $table->integer('status_pengajuan');        //1 belum di proses, 2  pendamping, 3 pimpinan
-            $table->string('nama_usaha');               // nama usaha yang akan di bangun jika menerima bantuan
-            $table->integer('keputusan')->nullable();   //1 diterima, 2 ditolak
+            $table->integer('status_pengajuan')->comment('1 belum di proses, 2  pendamping, 3 pimpinan');
+            $table->string('nama_usaha');
+            $table->integer('keputusan')->nullable()->comment('1 diterima, 2 ditolak');
+            $table->integer('progres')->nullable()->comment('null = null, 1 = onprogres, 2 = finish');
             $table->text('ktp');
             $table->text('kk');
-            $table->text('penghasilan');                // surat keterangan penghasilan
+            $table->text('penghasilan');
             $table->text('pesan')->nullable();
             $table->date('diterima')->nullable();
             $table->date('ditolak')->nullable();

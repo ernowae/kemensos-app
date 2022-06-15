@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 
 class BarangPimpinanController extends Controller
@@ -14,72 +16,60 @@ class BarangPimpinanController extends Controller
     public function index()
     {
         //
-        return view('barang.pimpinan.index');
+        $params = [
+            'title'         => 'Data Usulan',
+            'page_category' => 'Usulan Bansos',
+            'data'          => Pengajuan::with('barang')->where('progres', '=', 1)->get(),
+        ];
+        // dd($params);
+
+        return view('barang.pimpinan.index')->with($params);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function arsip()
     {
         //
+        $params = [
+            'title'         => 'Arsip Usulan Barang',
+            'page_category' => 'Usulan Bansos',
+            'data'          => Pengajuan::with('barang')->where('progres', '=', 2)->get(),
+        ];
+        // dd($params);
+
+        return view('barang.pimpinan.arsip')->with($params);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updateterima(Request $request, $id)
     {
-        //
+        $data = Pengajuan::find($id);
+        $data->progres    = 2;
+        $data->save();
+
+        return back()->with('status', 'usulan barang berhasil di proses menjadi diterima');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function reset(Request $request, $id)
     {
-        //
+        $data = Pengajuan::find($id);
+        $data->progres    = 1;
+        $data->save();
+
+        return back()->with('status', 'Pengajuan berhasil di preset, silahkan periksa menu usulan baru');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function updateusulan(Request $request, $id)
     {
-        //
-    }
+        foreach ($request->id as $i => $id) {
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            $data = Barang::findOrFail($id); // validations the product id
+            // dd($request->status[$i]);
+            $data->fill([
+                'status' => $request->status[$i],
+                'keterangan' => $request->keterangan[$i]
+            ])->save();
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+
+        return back()->with('status', 'usulan barang berhasil di proses');
     }
 }

@@ -1,105 +1,62 @@
-<x-auth-layout>
-
-    <!--begin::Signin Form-->
-    <form method="POST" action="{{ theme()->getPageUrl('login') }}" class="form w-100" novalidate="novalidate" id="kt_sign_in_form">
-    @csrf
-
-    <!--begin::Heading-->
-        <div class="text-center mb-10">
-            <!--begin::Title-->
-            <h1 class="text-dark mb-3">
-                {{ __('Sign In to Metronic') }}
-            </h1>
-            <!--end::Title-->
-
-            <!--begin::Link-->
-            <div class="text-gray-400 fw-bold fs-4">
-                {{ __('New Here?') }}
-
-                <a href="{{ theme()->getPageUrl('register') }}" class="link-primary fw-bolder">
-                    {{ __('Create an Account') }}
-                </a>
-            </div>
-            <!--end::Link-->
-        </div>
-        <!--begin::Heading-->
-
-        <div class="mb-10 bg-light-info p-8 rounded"><div class="text-info"> Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to continue. </div></div>
-
-        <!--begin::Input group-->
-        <div class="fv-row mb-10">
-            <!--begin::Label-->
-            <label class="form-label fs-6 fw-bolder text-dark">{{ __('Email') }}</label>
-            <!--end::Label-->
-
-            <!--begin::Input-->
-            <input class="form-control form-control-lg form-control-solid" type="email" name="email" autocomplete="off" value="{{ old('email', 'demo@demo.com') }}" required autofocus/>
-            <!--end::Input-->
-        </div>
-        <!--end::Input group-->
-
-        <!--begin::Input group-->
-        <div class="fv-row mb-10">
-            <!--begin::Wrapper-->
-            <div class="d-flex flex-stack mb-2">
-                <!--begin::Label-->
-                <label class="form-label fw-bolder text-dark fs-6 mb-0">{{ __('Password') }}</label>
-                <!--end::Label-->
-
-                <!--begin::Link-->
-                @if (Route::has('password.request'))
-                    <a href="{{ theme()->getPageUrl('password.request') }}" class="link-primary fs-6 fw-bolder">
-                        {{ __('Forgot Password ?') }}
-                    </a>
-            @endif
-            <!--end::Link-->
-            </div>
-            <!--end::Wrapper-->
-
-            <!--begin::Input-->
-            <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" value="demo" required/>
-            <!--end::Input-->
-        </div>
-        <!--end::Input group-->
-
-        <!--begin::Input group-->
-        <div class="fv-row mb-10">
-            <label class="form-check form-check-custom form-check-solid">
-                <input class="form-check-input" type="checkbox" name="remember"/>
-                <span class="form-check-label fw-bold text-gray-700 fs-6">{{ __('Remember me') }}
-            </span>
-            </label>
-        </div>
-        <!--end::Input group-->
-
-        <!--begin::Actions-->
-        <div class="text-center">
-            <!--begin::Submit button-->
-            <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
-                @include('partials.general._button-indicator', ['label' => __('Continue')])
-            </button>
-            <!--end::Submit button-->
-
-            <!--begin::Separator-->
-            <div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
-            <!--end::Separator-->
-
-            <!--begin::Google link-->
-            <a href="{{ url('/auth/redirect/google') }}?redirect_uri={{ url()->previous() }}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-                <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'svg/brand-logos/google-icon.svg') }}" class="h-20px me-3"/>
-                {{ __('Continue with Google') }}
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo width="82" />
             </a>
-            <!--end::Google link-->
+        </x-slot>
 
-            <!--begin::Facebook link-->
-            <a href="{{ url('/auth/redirect/facebook') }}?redirect_uri={{ url()->previous() }}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-                <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'svg/brand-logos/facebook-4.svg') }}" class="h-20px me-3"/>
-                {{ __('Continue with Facebook') }}
-            </a>
-            <!--end::Facebook link-->
+        <div class="card-body">
+            <!-- Session Status -->
+            <x-auth-session-status class="mb-3" :status="session('status')" />
+
+            <!-- Validation Errors -->
+            <x-auth-validation-errors class="mb-3" :errors="$errors" />
+
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <!-- Email Address -->
+                <div class="mb-3">
+                    <x-label for="email" :value="__('Email')" />
+
+                    <x-input id="email" type="email" name="email" :value="old('email')" required autofocus />
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <x-label for="password" :value="__('Password')" />
+
+                    <x-input id="password" type="password"
+                             name="password"
+                             required autocomplete="current-password" />
+                </div>
+
+                <!-- Remember Me -->
+                <div class="mb-3">
+                    <div class="form-check">
+                        <x-checkbox id="remember_me" name="remember" />
+
+                        <label class="form-check-label" for="remember_me">
+                            {{ __('Remember Me') }}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-0">
+                    <div class="d-flex justify-content-end align-items-baseline">
+                        @if (Route::has('password.request'))
+                            <a class="text-muted me-3" href="{{ route('password.request') }}">
+                                {{ __('Forgot your password?') }}
+                            </a>
+                        @endif
+
+                        <x-button>
+                            {{ __('Log in') }}
+                        </x-button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <!--end::Actions-->
-    </form>
-    <!--end::Signin Form-->
-
-</x-auth-layout>
+    </x-auth-card>
+</x-guest-layout>

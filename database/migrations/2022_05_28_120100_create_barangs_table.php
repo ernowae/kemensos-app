@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_barang');
             $table->integer('jumlah');
             $table->integer('harga');
-            $table->integer('status')->nullable(); //1: acc atau 2:tidak
+            $table->boolean('status')->default(0); //ON: acc atau OFF:tidak
             $table->text('keterangan')->nullable(); // pesan
             $table->text('foto')->nullable();
             $table->timestamps();
