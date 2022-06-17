@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LansiaRequest;
 use App\Models\Lansia;
 use App\Models\Pendamping;
+use App\Models\TemporaryFile;
 use App\Models\User;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use PhpParser\Node\Stmt\TryCatch;
+use Spatie\Permission\Contracts\Role;
 
 class LansiaController extends Controller
 {
@@ -20,12 +22,22 @@ class LansiaController extends Controller
      */
     public function index()
     {
+        // get id pendamping
+        $pendamping = Pendamping::where('user_id', auth()->user()->id)->first();
+        // kondisi berdasarkan level user
+        if (auth()->user()->hasRole('pembimbing')) {
+            // get data by pendamping id
+            $data = Lansia::with('user', 'wilayah')->where('pendamping_id', $pendamping->id)->get();
+        } else {
+            // get all data
+            $data = Lansia::with('user', 'wilayah')->get();
+        }
+
         $params = [
             'title'         => 'Data Lansia',
             'page_category' => 'Data Master',
-            'lansia'        => Lansia::with('user', 'wilayah')->get(),
+            'lansia'        => $data,
         ];
-        // dd($params['lansia'][0]->user->email);
         return view('lansia.index')->with($params);
     }
 
@@ -54,6 +66,9 @@ class LansiaController extends Controller
      */
     public function store(LansiaRequest $request)
     {
+
+        // dd($request->avatar);
+
         // echo 'here';
         // die;
         $user                   = new User;
@@ -78,6 +93,27 @@ class LansiaController extends Controller
         $data->penghasilan      = $request->penghasilan;
         $data->pendidikan       = $request->pendidikan;
         $data->agama            = $request->agama;
+        $data->avatar           = $request->avatar;
+        if (auth()->user()->hasRole('pembimbing')) {
+            $pendamping         = Lansia::where('pendamping_id', auth()->user()->id)->first();
+            $data->pendamping_id =  $pendamping->pendamping_id;
+        }
+
+        // if ($request->avatar) {
+
+
+        // $img = $request->avatar;
+
+        // $temporaryFile = TemporaryFile::where('folder', $img)->first();
+
+        // $data->avatar = $img;
+
+        // \File::move(public_path('storage/avatars/tmp/' . $img . '/' . $temporaryFile->filename, 'storage/avatars'), public_path('storage/avatars' . $temporaryFile->filename));
+
+        // \File::delete(public_path('storage/avatars/tmp/' . $img));
+
+        // $temporaryFile->delete();
+        // }
 
         $data->save();
 
@@ -155,12 +191,14 @@ class LansiaController extends Controller
         $lansia->penghasilan      = $request->penghasilan;
         $lansia->pendidikan       = $request->pendidikan;
         $lansia->agama            = $request->agama;
+        if (auth()->user()->hasRole('pembimbing')) {
+            $pendamping         = Lansia::where('pendamping_id', auth()->user()->id)->first();
+            $lansia->pendamping_id =  $pendamping->pendamping_id;
+        }
 
         $lansia->save();
-
         return to_route('lansia.index')->with('status', 'Data berhasil diperbaharui');
     }
-
     /**
      * Remove the specified resource from storage.
      *

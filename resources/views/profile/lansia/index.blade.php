@@ -30,6 +30,7 @@
                                         </div>
                                         <div class="d-flex flex-wrap">
                                             <a href="{{ route('profile.edit',[$lansia->id]) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('avatar') }}" class="btn btn-info">Foto</a>
                                         </div>
                                     </div>
                                 </div>

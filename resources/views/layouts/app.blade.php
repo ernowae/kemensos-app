@@ -49,6 +49,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
         <!-- END: Custom CSS-->
 
+        {{-- filePond --}}
+        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+        {{-- filePond --}}
+
     </head>
     <!-- END: Head-->
 
@@ -252,6 +256,26 @@
         <script src="{{ asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.js') }}"></script>
         <!-- END: Page JS-->
 
+        {{-- filepond --}}
+        <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+        <script>
+            // Get a reference to the file input element
+            const inputElement = document.querySelector('input[id="avatar"]');
+
+            // Create a FilePond instance
+            const pond = FilePond.create(inputElement);
+
+            FilePond.setOptions({
+                server : {
+                    url : '/upload',
+                    headers : {
+                        'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+                    }
+                }
+            });
+        </script>
+        {{-- filepond --}}
 
         <script>
             $(window).on('load', function() {

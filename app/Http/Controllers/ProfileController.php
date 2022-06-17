@@ -38,6 +38,25 @@ class ProfileController extends Controller
         return view('profile.index')->with($params);
     }
 
+    public function updateAvatar()
+    {
+        //
+        $id = Auth::user()->id;
+        $user  = User::with('lansia')->find($id);
+        $id_lansia = $user->lansia->id;
+
+        $params = [
+            'title'         => 'Avatar Profile',
+            'page_category' => 'Menu',
+            'lansia'        => Lansia::with('user')->find($id_lansia),
+            'kecamatan'     => Wilayah::get(),
+        ];
+
+        // dd($params);
+
+        return view('profile.lansia.editfoto')->with($params);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

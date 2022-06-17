@@ -25,6 +25,7 @@
                                 <th>Nama Usaha</th>
                                 <th>Barang</th>
                                 <th>Total</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                 <td>{{ $data->nama_usaha }}</td>
                                 <td><span class="font-weight-bold"> {{ $data->barang->count() }} Item</span> </td>
                                 <td><span class="font-weight-bold">Rp. {{  number_format($data->barang->sum('harga')); }}</span> </td>
+                                <td> <div class="badge badge-pill badge-glow badge-{{ $data->progres == 1 ? 'info' : 'primary' }}">{{ $data->progres == 1 ? 'Sedang Proses' : 'Selesai' }}</div></td>
                                 <td>
                                     <div class="row">
                                         {{-- show --}}
@@ -43,6 +45,7 @@
 
                                             <span><i data-feather='info'></i></span>
                                         </a>
+                                        @hasrole('pimpinan')
                                         <a>
                                             <form onsubmit="return confirm('Reset pengajuan ini?')" class="form"  method="POST" action="{{ route('barang-pimpinan.reset', [$data->id]) }}">
                                                 @csrf
@@ -51,6 +54,7 @@
                                                 <button type="submit" class="btn btn-outline-warning waves-effect"><i data-feather='rotate-ccw'></i></button>
                                             </form>
                                         </a>
+                                        @endhasrole
                                     </div>
                                 </td>
                             </tr>

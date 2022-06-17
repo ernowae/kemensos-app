@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendamping;
 use App\Models\Barang;
 use App\Models\Pengajuan;
 use Illuminate\Http\Request;
@@ -16,10 +17,21 @@ class BarangPimpinanController extends Controller
     public function index()
     {
         //
+        if (auth()->user()->hasRole('pembimbing')) {
+            $data = Pengajuan::with('barang')->where('progres', '=', NULL)->whereHas('lansia', function ($q) {
+                // get id pendamping
+                $pendamping = Pendamping::where('user_id', auth()->user()->id)->first();
+                $q->where('pendamping_id', $pendamping->id);
+            })->get();
+
+        } else {
+            $data = Pengajuan::with('barang')->where('progres', '=', 1)->get();
+        }
+
         $params = [
             'title'         => 'Data Usulan',
             'page_category' => 'Usulan Bansos',
-            'data'          => Pengajuan::with('barang')->where('progres', '=', 1)->get(),
+            'data'          => $data,
         ];
         // dd($params);
 
@@ -29,10 +41,20 @@ class BarangPimpinanController extends Controller
     public function arsip()
     {
         //
+        if (auth()->user()->hasRole('pembimbing')) {
+            $data = Pengajuan::with('barang')->where('progres', '!=', NULL)->whereHas('lansia', function ($q) {
+                // get id pendamping
+                $pendamping = Pendamping::where('user_id', auth()->user()->id)->first();
+                $q->where('pendamping_id', $pendamping->id);
+            })->get();
+        } else {
+            $data = Pengajuan::with('barang')->where('progres', '=', 2)->get();
+        }
+
         $params = [
             'title'         => 'Arsip Usulan Barang',
             'page_category' => 'Usulan Bansos',
-            'data'          => Pengajuan::with('barang')->where('progres', '=', 2)->get(),
+            'data'          => $data,
         ];
         // dd($params);
 
@@ -42,7 +64,12 @@ class BarangPimpinanController extends Controller
     public function updateterima(Request $request, $id)
     {
         $data = Pengajuan::find($id);
-        $data->progres    = 2;
+        if (auth()->user()->hasRole('pembimbing')) {
+            $data->progres    = 1;  # code...
+        } elseif (auth()->user()->hasRole('pimpinan')) {
+            $data->progres    = 2;  # code...
+        }
+        // $data->progres    = 2;
         $data->save();
 
         return back()->with('status', 'usulan barang berhasil di proses menjadi diterima');

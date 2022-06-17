@@ -23,7 +23,7 @@
                             </div>
                     @enderror
 
-                    <form class="form" method="POST" action="{{ route('lansia.store') }}">
+                    <form class="form" method="POST" action="{{ route('lansia.store') }}" enctype="multipart/form-data">
                             @csrf
                         <div class="row">
                             <div class="col-md-6 col-12">
@@ -164,6 +164,13 @@
                                         <option value="Budha">Budha</option>
                                     </select>
                                     @error('agama')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-12">
+                                <div class="form-group">
+                                    <label for="last-name-column">Avatar</label>
+                                    <input type="file" name="avatar" id="avatar">
                                 </div>
                             </div>
 

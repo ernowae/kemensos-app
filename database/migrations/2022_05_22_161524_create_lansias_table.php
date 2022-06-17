@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('penghasilan');
             $table->string('pendidikan');
             $table->string('agama');
+            $table->text('avatar')->nullable();
             $table->timestamps();
         });
     }
