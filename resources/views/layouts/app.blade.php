@@ -47,6 +47,8 @@
 
         <!-- BEGIN: Custom CSS-->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/page-knowledge-base.css') }}">
         <!-- END: Custom CSS-->
 
         {{-- filePond --}}
@@ -288,6 +290,7 @@
             })
 
         </script>
+
 
         @stack('script')
 

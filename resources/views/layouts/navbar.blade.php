@@ -218,20 +218,6 @@
                     </a>
                 </li>
 
-                <li class=" nav-item @if (Request::segment(1)=='pengajuan-lansia' ) active @endif">
-                    <a class="d-flex align-items-center" href="{{ route('dashboard') }}">
-                        <i data-feather="layers"></i>
-                        <span class="menu-title text-truncate" data-i18n="Email">Usulan Barang</span>
-                    </a>
-                </li>
-
-                <li class=" nav-item @if (Request::segment(1)=='galeri' ) active @endif">
-                    <a class="d-flex align-items-center" href="{{ route('wilayah.index') }}">
-                        <i data-feather='image'></i>
-                        <span class="menu-title text-truncate" data-i18n="Email">Galeri</span>
-                    </a>
-                </li>
-
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Menu</span><i data-feather="more-horizontal"></i>
                 </li>
 

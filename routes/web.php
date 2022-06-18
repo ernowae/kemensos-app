@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lansia-pendamping', [LansiaController::class, 'indexPendamping'])->name('lansia-pendamping');
     Route::resource('pengajuan', PengajuanController::class);
+    Route::resource('barang', BarangController::class);
 });
 
 require __DIR__ . '/auth.php';
