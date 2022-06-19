@@ -65,9 +65,9 @@
                                 <div class="card text-center" data-toggle="tooltip" data-placement="top" title="{{ $data->ktp }}" data-original-title="Tooltip on top">
                                     <div class="card-body">
                                         <div class="avatar bg-light-info p-50 mb-1">
-                                            <div class="avatar-content">
+                                            <a target="_blank" href="{{asset('storage/'.$data->ktp)}}" class="avatar-content">
                                                 <i data-feather='file-text'></i>
-                                            </div>
+                                            </a>
                                         </div>
                                         <h2 class="font-weight-bolder">KTP</h2>
                                         <p class="card-text">Kartu Tanda Penduduk</p>
@@ -78,9 +78,9 @@
                                 <div class="card text-center" data-toggle="tooltip" data-placement="top" title="{{ $data->kk }}" data-original-title="Tooltip on top">
                                     <div class="card-body">
                                         <div class="avatar bg-light-warning p-50 mb-1">
-                                            <div class="avatar-content">
+                                            <a target="_blank" href="{{asset('storage/'.$data->kk)}}" class="avatar-content">
                                                 <i data-feather='file-text'></i>
-                                            </div>
+                                            </a>
                                         </div>
                                         <h2 class="font-weight-bolder">KK</h2>
                                         <p class="card-text">Kartu Keluarga</p>
@@ -91,9 +91,9 @@
                                 <div class="card text-center" data-toggle="tooltip" data-placement="top" title="{{ $data->penghasilan }}" data-original-title="Tooltip on top">
                                     <div class="card-body">
                                         <div class="avatar bg-light-danger p-50 mb-1">
-                                            <div class="avatar-content">
+                                            <a target="_blank" href="{{asset('storage/'.$data->penghasilan)}}" class="avatar-content">
                                                 <i data-feather='file-text'></i>
-                                            </div>
+                                            </a>
                                         </div>
                                         <h2 class="font-weight-bolder">SK</h2>
                                         <p class="card-text">Surat Penghasilan</p>

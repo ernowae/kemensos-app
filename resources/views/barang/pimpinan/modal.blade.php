@@ -48,7 +48,14 @@
                                         <div class="badge badge-light-success">Rp. {{  number_format($barang->harga); }}</div>
                                     </div>
                                     {{-- keterangan --}}
-                                    <input name="keterangan[]" value="{{ $barang->keterangan }}" type="text" id="payment-input-name" class="form-control mt-2" placeholder="Catatan">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <input name="keterangan[]" value="{{ $barang->keterangan }}" type="text" id="payment-input-name" class="form-control mt-2" placeholder="Catatan">
+                                        </div>
+                                        <div class="col-md-2 mt-2 pb-1">
+                                            <a target="_blank" href="{{asset('storage/'.$barang->foto)}}"><li class="list-group-item">Foto</li></a>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 @endforeach

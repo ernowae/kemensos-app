@@ -71,12 +71,12 @@
                     </ul>
                 </li>
 
-                <li class=" nav-item @if (Request::segment(1)=='galeri' ) active @endif">
+                {{-- <li class=" nav-item @if (Request::segment(1)=='galeri' ) active @endif">
                     <a class="d-flex align-items-center" href="{{ route('wilayah.index') }}">
                         <i data-feather='image'></i>
                         <span class="menu-title text-truncate" data-i18n="Email">Galeri</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Menu</span><i data-feather="more-horizontal"></i>
                 </li>
@@ -170,12 +170,12 @@
                     </ul>
                 </li>
 
-                <li class=" nav-item @if (Request::segment(1)=='galeri' ) active @endif">
+                {{-- <li class=" nav-item @if (Request::segment(1)=='galeri' ) active @endif">
                     <a class="d-flex align-items-center" href="{{ route('wilayah.index') }}">
                         <i data-feather='image'></i>
                         <span class="menu-title text-truncate" data-i18n="Email">Galeri</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Menu</span><i data-feather="more-horizontal"></i>
                 </li>

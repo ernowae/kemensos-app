@@ -76,10 +76,10 @@
                             <sup class="text-body"><small>Status Pengajuan</small></sup> <br>
                             <h2 class="d-inline mr-25"> {{ $item->status_pengajuan == 1 ? 'Belum di proses' : ($item->status_pengajuan == 2 ? 'Proses Pendamping' : 'Proses Pimpinan' ) }}</h2>
                         </div>
-                        <div class="badge badge-primary">{{ $item->sesi->tahun_anggaran }}</div>
+                        <div class="badge badge-primary">{{ $item->tahun_anggaran }}</div>
                     </div>
                     @if ( $item->keputusan == 1 )
-                    <a href="{{ route('barang.show', $item->id) }}" class="btn btn-primary btn-block waves-effect waves-float waves-light">Usulkan Barang Bantuan</a>
+                    <a href="{{ route('barang.index', $item->id) }}" class="btn btn-primary btn-block waves-effect waves-float waves-light">Usulkan Barang Bantuan</a>
                     @endif
 
                 </div>

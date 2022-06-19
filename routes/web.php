@@ -80,7 +80,16 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lansia-pendamping', [LansiaController::class, 'indexPendamping'])->name('lansia-pendamping');
     Route::resource('pengajuan', PengajuanController::class);
-    Route::resource('barang', BarangController::class);
+    // Route::resource('barang', BarangController::class);
+    Route::get('/barang/{barang}', [BarangController::class, 'index'])->name('barang.index');
+    Route::get('/barang/create/{barang}', [BarangController::class, 'create'])->name('barang.create');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+    Route::get('/barang/edit/{barang}', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/{barang}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/{barang}', [BarangController::class, 'destroy'])->name('barang.destroy');
+
+    // Route::get('/detaildonasi/{data:id}', [DetailDonasiController::class, 'index'])->name('detailDonasi.index');
+    // Route::get('/detaildonasi/create/{data:id}', [DetailDonasiController::class, 'create'])->name('detailDonasi.create');
 });
 
 require __DIR__ . '/auth.php';
