@@ -20,23 +20,23 @@ class SesiSeeder extends Seeder
 
         Sesi::create([
             'tahun_anggaran'    => '2021/2022',
-            'Status'            => 'Aktif',
-            'Mulai'             => date("Y-m-d H:i:s"),
-            'selesai'           => date("Y-m-d H:i:s"),
+            'Status'            => 'Nonaktif',
+            'Mulai'             => date("2021-04-30 00:00:01"),
+            'selesai'           => date("2021-07-30 23:59:59"),
         ]);
 
         Sesi::create([
             'tahun_anggaran'    => '2022/2023',
             'Status'            => 'Nonaktif',
-            'Mulai'             => date("Y-m-d H:i:s"),
-            'selesai'           => date("Y-m-d H:i:s"),
+            'Mulai'             => date("2022-04-30 00:00:01"),
+            'selesai'           => date("2022-07-30 23:59:59"),
         ]);
 
         Sesi::create([
             'tahun_anggaran'    => '2023/2024',
             'Status'            => 'Nonaktif',
-            'Mulai'             => date("Y-m-d H:i:s"),
-            'selesai'           => date("Y-m-d H:i:s"),
+            'Mulai'             => date("2023-04-30 00:00:01"),
+            'selesai'           => date("2023-07-30 23:59:59"),
         ]);
     }
 }

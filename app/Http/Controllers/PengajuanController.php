@@ -17,9 +17,39 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        // dd($data);
-        $sesi = Sesi::where('status', '=', 'Aktif')->first();
-        $id   = $sesi->id;
+        $carbon = Carbon::now();
+        $now  = date_format($carbon, "Y-m-d h:i:s");
+        $jumlah = Sesi::where('status', '=', 'Aktif')->count();
+
+        $id = 0;
+        if ($sesi = Sesi::where('status', '=', 'Aktif')->first()) {
+            $id   = $sesi->id;
+        }
+        // hitung jumnlah sesi aktif
+        if ($jumlah == 0) {
+            $kondisi = 1; // tidak ada sesi aktif
+        } elseif ($jumlah == 1) {
+            $sesi = Sesi::where('status', '=', 'Aktif')->first();
+            $sesi_id = $sesi->id;
+            // cek sudah ada pengajuan di sesi ini atau belum
+            $pengajuan = Pengajuan::where('lansia_id', auth()->user()->id)->where('sesi_id', $sesi_id)->first();
+            $lansia_id = $pengajuan->lansia_id;
+
+            if (is_null($lansia_id)) {
+                $selesai = $sesi->selesai;
+                if ($selesai > $now) {
+                    $kondisi = 2; // sesi aktif waktu tersedia
+                } elseif ($selesai < $now) {
+                    $kondisi = 3; // sesi aktif waktu habis
+                }
+            } else {
+                $kondisi = 5; // sesi aktif waktu tersedia
+            }
+        } elseif ($jumlah > 1) {
+            $kondisi = 4; // lebih dari 1 sesi aktif
+        }
+        // dd($kondisi, $selesai, $now);
+        // dd($kondisi);
 
         $params = [
             'title'         => 'Pengajuan',
@@ -27,7 +57,7 @@ class PengajuanController extends Controller
             // get sesi aktif
             'sesi'          => $sesi,
             // count jumlah sesi aktif, jika lebih dari 1, maka tamplian ke kondisi 3 di index.blade.php
-            'kondisi'       => Sesi::where('status', '=', 'Aktif')->count(),
+            'kondisi'       => $kondisi,
             // get data pengajuan riwayat
             'pengajuan'     => Pengajuan::with('sesi')->where('lansia_id', auth()->user()->id)->get(),
             // get jumlah pengajuan di sesi saat ini
@@ -95,9 +125,7 @@ class PengajuanController extends Controller
             $file = $request->file('penghasilan')->store('pengajuan', 'public');
             $data->penghasilan = $file;
         }
-
         // dd($data);
-
         $data->save();
 
         return to_route('pengajuan.index')->with('status', 'Pengajuan berhasil disimpan');

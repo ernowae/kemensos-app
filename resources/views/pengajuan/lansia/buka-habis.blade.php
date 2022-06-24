@@ -1,13 +1,13 @@
-<p class="card-text mb-2">
-    <span class="font-weight-bolder">Sesi saat ini sedang angktif </span><span>anda dapat melakukan pengajuan selama sesi sedang pengajuan sedang berlangsung</span>
+<p class="card-text mb-6">
+    <span class="font-weight-bolder">Sesi saat ini Sudah kadaluarsa </span><span>anda dapat melakukan pengajuan pada sesi selanjutnya</span>
 </p>
 
-<div class="mb-2">
+{{-- <div class="mb-2">
     <a type="button" class="btn btn-warning waves-effect waves-float waves-light" href="{{ route('pengajuan.show', $sesi->id) }}">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star mr-25"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
         <span>Daftar</span>
     </a>
-</div>
+</div> --}}
 
 <div class="row">
     <div class="col-lg-3 col-sm-6 col-12">
@@ -101,7 +101,6 @@
       if (distance < 0) {
         clearInterval(x);
         document.getElementById("demo").innerHTML = "EXPIRED";
-        // window.location.reload();
       }
     }, 1000);
     </script>

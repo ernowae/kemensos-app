@@ -52,7 +52,7 @@
                                 <input type="text" id="fp-date-time" class="form-control flatpickr-date-time flatpickr-input active" placeholder="YYYY-MM-DD HH:MM" name="mulai">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for="fp-date-time">Sesi Mulai</label>
+                                <label for="fp-date-time">Sesi Selesai</label>
                                 <input type="text" id="fp-date-time" class="form-control flatpickr-date-time flatpickr-input active" placeholder="YYYY-MM-DD HH:MM" name="selesai">
                             </div>
 

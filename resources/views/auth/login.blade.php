@@ -5,6 +5,7 @@
                 <x-application-logo width="82" />
             </a>
         </x-slot>
+        <h5 class="text-center mt-2">Selamat Datang <br> <span>Silahkan masuk terlebih dahulu</span></h5>
 
         <div class="card-body">
             <!-- Session Status -->

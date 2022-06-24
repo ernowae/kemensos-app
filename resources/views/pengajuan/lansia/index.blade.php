@@ -10,18 +10,13 @@
                 <div class="card knowledge-base-bg text-center" style="background-image: url('{{ asset('app-assets/images/banner/banner.png') }}')">
                     <div class="card-body">
                         <h2 class="text-primary">Pengajuan Bantuan</h2>
-                        @if ( $kondisi == 0 )
+                        @if ( $kondisi == 1 )
                             @include('pengajuan.lansia.tutup')
-                        @elseif( $kondisi == 1 )
-                            @if ($jumlah == 0)
-                                @include('pengajuan.lansia.buka')
-                            @endif
-                            <p class="card-text mb-2">
-                                <span>Terimakasih anda sudah berpatisipasi pada pengajuan di sesi ini.</span>
-                                <span class="font-weight-bolder"> silahkan menunggu,</span>
-                                <span> pengajuan anda saat ini sedang di proses</span>
-                            </p>
-                        @else
+                        @elseif( $kondisi == 2 )
+                            @include('pengajuan.lansia.buka')
+                        @elseif($kondisi == 3)
+                            @include('pengajuan.lansia.buka-habis')
+                        @elseif($kondisi == 4)
                             <p class="card-text mb-2">
                                 <span class="font-weight-bolder">Ada yang salah dengan halaman ini</span><span> silahkan hubungi pendamping untuk memeriksanya</span>
                             </p>
